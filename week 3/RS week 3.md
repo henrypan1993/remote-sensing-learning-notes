@@ -80,7 +80,7 @@ there are two approaches to interpretation:
 
 **Question: Why are the original satellite remote sensing images all reddish?**
 
-![Why are the original satellite remote sensing images all reddish](week 3/RS week 3.assets/Why are the original satellite remote sensing images all reddish-1756459701480-2.png)
+![Why are the original satellite remote sensing images all reddish](RS%20week%203.assets/Why%20are%20the%20original%20satellite%20remote%20sensing%20images%20all%20reddish-1756459701480-2.png)
 
 As shown in the figure, the red channel accounts for approximately 55%, thus exerting an overwhelming impact on the coloration of the image
 
