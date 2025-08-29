@@ -20,10 +20,15 @@ $$d(\mathbf{x}, \mathbf{m}_i)^2 = (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} (\mathb
 $$d(\mathbf{x}, \mathbf{m}_j)^2 = (\mathbf{x} - \mathbf{m}_j)^\mathrm{T} (\mathbf{x} - \mathbf{m}_j)$$
 
 Giving
+
 $$\mathbf{x}^\mathrm{T}\mathbf{x} - \mathbf{m}_i^\mathrm{T}\mathbf{x} - \mathbf{x}^\mathrm{T}\mathbf{m}_i + \mathbf{m}_i^\mathrm{T}\mathbf{m}_i = \mathbf{x}^\mathrm{T}\mathbf{x} - \mathbf{m}_j^\mathrm{T}\mathbf{x} - \mathbf{x}^\mathrm{T}\mathbf{m}_j + \mathbf{m}_j^\mathrm{T}\mathbf{m}_j$$
+
 so that, noting：
+
 $$\mathbf{y}^\mathrm{T}\mathbf{z} = \mathbf{z}^\mathrm{T}\mathbf{y} \text{ and } (\mathbf{y}^\mathrm{T} + \mathbf{z}^\mathrm{T}) = (\mathbf{y} + \mathbf{z})^\mathrm{T}$$
+
 Then
+
 $$
 2(\mathbf{m}_j - \mathbf{m}_i)^\mathrm{T} \mathbf{x} + (\mathbf{m}_i^\mathrm{T}\mathbf{m}_i - \mathbf{m}_j^\mathrm{T}\mathbf{m}_j) = 0
 $$
@@ -55,36 +60,71 @@ There are 4 main steps:
 
 ![The SVM - calculating the margin](RS%20week%207.assets/The%20SVM%20-%20calculating%20the%20margin..png)
 
- The perpendicular distance from a point X_0 to a plane, in general is:
+The perpendicular distance from a point $X_0$ to a plane, in general, is:
+
 $$
-\frac{|\boldsymbol{w}^\mathrm{T}\boldsymbol{x}_0 + w_{N+1}|}{\|\boldsymbol{w}\|}
+\frac{\left| \mathbf{w}^{\top}\mathbf{x}_0 + w_{N+1} \right|}{\|\mathbf{w}\|}
 $$
-if X_0 = 0, the original, and the plane is the right hand marginal hyperplane:
-$$(d1) \quad \frac{|1 + w_{N+1}|}{\|\boldsymbol{w}\|}$$
-likewise
-$$(d2) \quad \frac{|-1 + w_{N+1}|}{\|\boldsymbol{w}\|}$$
-d1-d2, then
+
+If $X_0 = 0$, and the plane is the right-hand marginal hyperplane:
+
+$$(d1) \quad \frac{\lvert 1 + w_{N+1}\rvert}{\lVert \boldsymbol{w} \rVert}$$  
+
+Likewise:
+
+$$(d2) \quad \frac{\lvert -1 + w_{N+1}\rvert}{\lVert \boldsymbol{w} \rVert}$$  
+
+Then, the margin is:
+
 $$
-\text{margin} = \frac{2}{\|\boldsymbol{w}\|} 
+\text{margin} = \frac{2}{\lVert \boldsymbol{w} \rVert}
 $$
+
 to maximize the margin means to minimize ||w||, but we have to consider the problem of overlapping, so the solution is **Lagrange multipliers**
 
 #### Support Vector Machine: Lagrange Formulation and Derivation
 
 Defines the initial Lagrange for SVM margin maximization, including the weight vector norm, Lagrange multipliers, and general constraints
-$$(1) \quad \mathcal{L} = \frac{1}{2} \|\mathbf{w}\|^2 - \sum_{i} \alpha_i f_i$$
+
+$$
+(1) \quad \mathcal{L} = \frac{1}{2} \|\mathbf{w}\|^2 - \sum_{i} \alpha_i f_i
+$$
+
 Updates the Lagrange by substituting constraints with a specific form involving class labels, sample vectors, and the bias term
-$$(2) \quad \mathcal{L} = \frac{1}{2} \|\mathbf{w}\|^2 - \sum_{i} \alpha_i \left\{ y_i(\mathbf{w}^\mathrm{T}\mathbf{x}_i + w_{N+1}) - 1 \right\}$$
+
+$$
+(2) \quad \mathcal{L} = \frac{1}{2} \lvert \mathbf{w}\rvert^2 - \sum_{i} \alpha_i \left( y_i(\mathbf{w}^\mathsf{T}\mathbf{x}_i + w_{N+1}) - 1 \right) 
+$$
+
 Derives the weight vector as a linear combination of training samples by taking the partial derivative of the Lagrange with respect to the weight vector and setting it to zero
-$$(3) \quad \frac{\partial \mathcal{L}}{\partial \mathbf{w}} = \mathbf{w} - \sum_{i} \alpha_i y_i \mathbf{x}_i = 0 \implies \mathbf{w} = \sum_{i} \alpha_i y_i \mathbf{x}_i$$
+
+$$
+(3) \quad \frac{\partial \mathcal{L}}{\partial \mathbf{w}} = \mathbf{w} - \sum_{i} \alpha_i y_i \mathbf{x}_i = 0 \implies \mathbf{w} = \sum_{i} \alpha_i y_i \mathbf{x}_i
+$$
+
 Enforces a constraint on Lagrange multipliers and class labels by taking the partial derivative of the Lagrange with respect to the bias term and setting it to zero
-$$(4) \quad \frac{\partial \mathcal{L}}{\partial w_{N+1}} = -\sum_{i} \alpha_i y_i = 0$$
+
+$$
+(4) \quad \frac{\partial \mathcal{L}}{\partial w_{N+1}} = -\sum_{i} \alpha_i y_i = 0
+$$
+
 Rewrites the Lagrange in dual form using prior results, focusing on optimizing Lagrange multipliers directly
-$$(5) \quad \mathcal{L} = \sum_{i} \alpha_i - \frac{1}{2} \sum_{i,j} \alpha_i \alpha_j y_i y_j \mathbf{x}_j^\mathrm{T} \mathbf{x}_i$$
+
+$$
+(5) \quad \mathcal{L} = \sum_{i} \alpha_i - \frac{1}{2} \sum_{i,j} \alpha_i \alpha_j y_i y_j \mathbf{x}_j^\mathrm{T} \mathbf{x}_i
+$$
+
 States the KKT condition, where either a Lagrange multiplier is zero or the corresponding sample lies on the margin hyperplane
-$$(6) \quad \alpha_i \left\{ y_i(\mathbf{w}^\mathrm{T}\mathbf{x}_i + w_{N+1}) - 1 \right\} = 0$$
+
+$$
+(6) \quad \alpha_i \left\{ y_i(\mathbf{w}^\mathrm{T}\mathbf{x}_i + w_{N+1}) - 1 \right\} = 0
+$$
+
 Simplifies the weight vector expression to include only support vectors, leveraging the KKT condition to reduce complexity
-$$(7) \quad \mathbf{w} = \sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i$$
+
+$$
+(7) \quad \mathbf{w} = \sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i
+$$
 
 ### SVM: Primal vs Dual Comparison
 
@@ -115,41 +155,65 @@ C balances this tension.
 ```
 
 ![Soft-Margin SVM Tolerance, Constraints, and the Role of C](RS%20week%207.assets/Soft-Margin%20SVM%20Tolerance%2C%20Constraints%2C%20and%20the%20Role%20of%20C.png)
+
 $$
 z = \text{sgn}\{\mathbf{w}^\mathrm{T}\mathbf{x} + w_{N+1}\} = \text{sgn}\left\{\sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i^\mathrm{T}\mathbf{x} + w_{N+1}\right\}
 $$
-then the simplest approach is to choose a support vector from each class, called x(1) and x(-1)
-$$(1) \quad (\mathbf{w}^\mathrm{T}\mathbf{x}(-1) + w_{N+1}) - 1 = 0$$
 
-$$(2) \quad (\mathbf{w}^\mathrm{T}\mathbf{x}(1) + w_{N+1}) + 1 = 0$$
+then the simplest approach is to choose a support vector from each class, called x(1) and x(-1)
+
+$$
+(1) \quad (\mathbf{w}^\mathrm{T}\mathbf{x}(-1) + w_{N+1}) - 1 = 0
+$$
+
+$$
+(2) \quad (\mathbf{w}^\mathrm{T}\mathbf{x}(1) + w_{N+1}) + 1 = 0
+$$
 
 because of (1) + (2),
+
 $$
 w_{N+1} = -\frac{1}{2} \mathbf{w}^\mathrm{T}[\mathbf{x}(-1) + \mathbf{x}(1)]
 $$
+
 it means that the bias is obtained by taking the midpoint of the positive and negative support vectors, projecting it onto the direction of w, and then applying the symmetry condition
 
 Since not all training samples can be perfectly separated, the SVM introduces slack variables by relaxing the maximum margin requirement, it's called ξ
 
 instead of
+
 $$
 y_i \left( \mathbf{w}^\mathrm{T} \mathbf{x}_i + w_{N+1} \right) \geq 1
 $$
+
 we get
+
 $$
 y_i \left( \mathbf{w}^\mathrm{T} \mathbf{x}_i + w_{N+1} \right) \geq 1 - \xi_i
 $$
+
 their sum will be an indication of the total error incurred by the poorly located training pixels
+
 $$
 \frac{1}{2} \|\mathbf{w}\| + C \sum_{i} \xi_i
 $$
+
 introduce two constrains:
-$$(A) \quad y_i(\mathbf{w}^\mathrm{T} \mathbf{x}_i + w_{N+1}) \geq 1 - \xi_i$$
+
+$$
+(A) \quad y_i \big( \mathbf{w}^\top \mathbf{x}_i + w_{N+1} \big) \geq 1 - \xi_i
+$$
+
 (A) means If $\xi_i = 0$, the point must lie strictly outside the margin; if $\xi_i > 0$, the point is allowed to enter the margin or even be misclassified
-$$(B) \quad \xi_i \geq 0$$
+
+$$
+(B) \quad \xi_i \geq 0
+$$
+
 (B) means Slack variables must be non-negative; they cannot cancel the classification condition
 
 we can get the equation:
+
 $$
 \mathcal{L} = \frac{1}{2} \|\mathbf{w}\| + C \sum_{i} \xi_i - \sum_{i} \alpha_i \left\{ y_i \left( \mathbf{w}^\mathrm{T} \mathbf{x}_i + w_{N+1} \right) - 1 + \xi_i \right\} - \sum_{i} \mu_i \xi_i
 $$
@@ -169,60 +233,78 @@ Diversity of kernels: Different kernel functions correspond to different types o
 ```
 
 the two classes are defined by the sign being positive and negative:
+
 $$
 z = \text{sgn}\{\mathbf{w}^\mathrm{T}\mathbf{x} + w_{N+1}\} = \text{sgn}\left\{\sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i^\mathrm{T}\mathbf{x} + w_{N+1}\right\}
 $$
+
 and we notice that the key operation is dot product, it can be represented by a **Kernel function**
+
 $$
 \phi(\mathbf{x}_i)^\mathrm{T} \phi(\mathbf{x}) \to k(\mathbf{x}_i, \mathbf{x})
 $$
+
 using the kernel function in the decision:
+
 $$
 z = \text{sgn}\{ k(\mathbf{w}, \mathbf{x}) + w_{N+1} \} = \text{sgn}\left\{ \sum_{i \in \mathcal{S}} \alpha_i y_i k(\mathbf{x}_i, \mathbf{x}) + w_{N+1} \right\}
 $$
+
 the most common kernel function in RS:
 
 - square of the scalar product(of limited value)
-  $$
-  k(\mathbf{x}_i, \mathbf{x}) = (\mathbf{x}_i^\mathrm{T} \mathbf{x})^2
-  $$
+
+$$
+k(\mathbf{x}_i, \mathbf{x}) = (\mathbf{x}_i^\mathrm{T} \mathbf{x})^2
+$$
   
 
 - polynomial(of limited value)
-  $$
-  k(\mathbf{x}_i, \mathbf{x}) = (\mathbf{x}_i^\mathrm{T} \mathbf{x} + b)^m
-  $$
+
+$$
+k(\mathbf{x}_i, \mathbf{x}) = (\mathbf{x}_i^\mathrm{T} \mathbf{x} + b)^m
+$$
   
 
 - Gaussian radial basis function(the most popular)
-  $$
-  k(\mathbf{x}_i, \mathbf{x}) = \exp\{-\gamma |\mathbf{x} - \mathbf{x}_i|^2\}
-  $$
+
+$$
+k(\mathbf{x}_i, \mathbf{x}) = \exp\{-\gamma |\mathbf{x} - \mathbf{x}_i|^2\}
+$$
   
 
 - sigmoidal(the most popular)
-  $$
-  k(\mathbf{x}_i, \mathbf{x}) = \tanh(\kappa \mathbf{x}_i^\mathrm{T} \mathbf{x} + b)
-  $$
+
+$$
+k(\mathbf{x}_i, \mathbf{x}) = \tanh(\kappa \mathbf{x}_i^\mathrm{T} \mathbf{x} + b)
+$$
 
 ### To see how kernel function work
 
 Definition of the quadratic kernel function
+
 $$
 k(\mathbf{y}, \mathbf{x}) = (\mathbf{y}^\mathrm{T}\mathbf{x})^2
 $$
+
 Two - dimensional vector representations of **y** and **x**
+
 $$
 \mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \end{bmatrix}, \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
 $$
+
 Expansion of the quadratic kernel for two - dimensional vectors
+
 $$
 k(\mathbf{y}, \mathbf{x}) = (\mathbf{y}^\mathrm{T}\mathbf{x})^2 = [x_1 y_1 + x_2 y_2]^2 = x_1^2 y_1^2 + 2 x_1 y_1 x_2 y_2 + x_2^2 y_2^2
 $$
+
 Rewrite the quadratic kernel as a scalar product of transformed vectors
+
 $$
 k(\mathbf{y}, \mathbf{x}) = \begin{bmatrix} x_1^2 & \sqrt{2} x_1 x_2 & x_2^2 \end{bmatrix} \begin{bmatrix} y_1^2 \\ \sqrt{2} y_1 y_2 \\ y_2^2 \end{bmatrix} = \begin{bmatrix} x_1^2 \\ \sqrt{2} x_1 x_2 \\ x_2^2 \end{bmatrix}^\mathrm{T} \begin{bmatrix} y_1^2 \\ \sqrt{2} y_1 y_2 \\ y_2^2 \end{bmatrix}
 $$
+
 thus k can be expressed as a scalar product
 
 ![the explanation and meaning of kernel function](RS%20week%207.assets/the%20explanation%20and%20meaning%20of%20kernel%20function.png)
