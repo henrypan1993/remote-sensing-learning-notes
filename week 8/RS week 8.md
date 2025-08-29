@@ -16,8 +16,8 @@ Threshold logic unit (TLU) was used in the early stages, but it could only repre
 | ------------------- | ------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------- | --------------------------------------- |
 | Sigmoid             | Earliest            | (0, 1)       | Smooth, differentiable; used for binary classification output | Gradient vanishing; not zero-centered |                                      |
 | tanh                | Second              | (-1, 1)      | Zero-centered; faster convergence                            | Still suffers from gradient vanishing | Fixes Sigmoid's non-zero-centered issue |
-| ReLU                | Third               | [0, ∞?       | Solves gradient vanishing; computationally efficient         | Dead neuron problem                   | Addresses tanh's gradient vanishing     |
-| Leaky ReLU          | Fourth              | (-∞? ∞?      | Mitigates dead neuron issue                                  | Requires hyperparameter α             | Fixes ReLU's dead neuron issue          |
+| ReLU                | Third               | [0, ∞)       | Solves gradient vanishing; computationally efficient         | Dead neuron problem                   | Addresses tanh's gradient vanishing     |
+| Leaky ReLU          | Fourth              | (-∞, ∞)      | Mitigates dead neuron issue                                  | Requires hyperparameter α             | Fixes ReLU's dead neuron issue          |
 
 Among them, Sigmoid could be expressed like:
 
@@ -61,7 +61,7 @@ $$E = -\sum t \log(g)$$
 | **Advantages**     | - Simple & intuitive  - Easy derivative                  | - Matches probabilistic view  - Faster & more stable training in classification |
 | **Disadvantages**  | - Less efficient for classification - Slower convergence | - Needs outputs in [0,1] (probabilities)                     |
 
-![](RS%20week%208.assets/Evolution%20of%20Neural%20Network%20Units%20TLU%20→20PE%20→20MLP.png)
+![](RS%20week%208.assets/Evolution%20of%20Neural%20Network%20Units%20TLU%20PE%20MLP.png)
 
 ## Lecture 12. Training the neural network
 
@@ -69,7 +69,9 @@ $$E = -\sum t \log(g)$$
 
 For the weights linking the j and k layers this is
 
-$$w'_{kj} = w_{kj} - \eta \frac{\partial E}{\partial w_{kj}} = w_{kj} + \Delta w_{kj}$$
+$$
+w'_{kj} = w_{kj} - \eta \frac{\partial E}{\partial w_{kj}} = w_{kj} + \Delta w_{kj}
+$$
 
 where η is a positive constant, called the learning rate
 
@@ -79,7 +81,9 @@ where η is a positive constant, called the learning rate
 
 ---
 
-$$\frac{\partial E}{\partial w_{kj}} = \frac{\partial E}{\partial g_k} \cdot \frac{\partial g_k}{\partial z_k} \cdot \frac{\partial z_k}{\partial w_{kj}}$$
+$$
+\frac{\partial E}{\partial w_{kj}} = \frac{\partial E}{\partial g_k} \cdot \frac{\partial g_k}{\partial z_k} \cdot \frac{\partial z_k}{\partial w_{kj}}
+$$
 
 - Break into pieces: First take the derivative of the outer function
 - Layer-by-layer propagation: Similar to neural networks, where the error $E$ is back-propagated step by step until it reaches the weights $w$
@@ -98,9 +102,13 @@ $$(A) \quad \Delta w_{kj} = - \eta \frac{\partial E}{\partial w_{kj}} = \eta (t_
 
 Now consider the weights linking the i and j layers
 
-$$(4) \quad w'_{ji} = w_{ji} - \eta \frac{\partial E}{\partial w_{ji}} = w_{ji} + \Delta w_{ji}$$
+$$
+(4) \quad w'_{ji} = w_{ji} - \eta \frac{\partial E}{\partial w_{ji}} = w_{ji} + \Delta w_{ji}
+$$
 
-$$(5) \quad \text{in which, } \eta \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial g_j} \cdot \frac{\partial g_j}{\partial z_j} \cdot \frac{\partial z_j}{\partial w_{ji}} = \eta \frac{\partial E}{\partial g_j} \, (1 - g_j) g_j g_i$$
+$$
+(5) \quad \text{in which, } \eta \frac{\partial E}{\partial w_{ji}} = \frac{\partial E}{\partial g_j} \cdot \frac{\partial g_j}{\partial z_j} \cdot \frac{\partial z_j}{\partial w_{ji}} = \eta \frac{\partial E}{\partial g_j} \, (1 - g_j) g_j g_i
+$$
 
 we use chain rule again:
 
