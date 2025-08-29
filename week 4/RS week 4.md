@@ -57,16 +57,14 @@ In remote sensing, the high dimensionality of spectral data makes linear algebra
 
 > The mean vector tells us the average position of pixels in the spectral domain. We would also like to know how they spread about that **mean position**. That is the role of the **covariance matrix**, which is the multidimensional form of the variance (square of standard deviation) of the normal distribution in one dimension
 
-$$
-\mathbf{C}_x = \frac{1}{K - 1} \sum_{k=1}^{K} (\mathbf{x}_k - \mathbf{m})(\mathbf{x}_k - \mathbf{m})^T
-$$
+$\mathbf{C}x = \frac{1}{K - 1} \sum_{k=1}^{K} (\mathbf{x}_k - \mathbf{m})(\mathbf{x}_k - \mathbf{m})^T$
 
 When estimating variance or covariance from sample data, dividing by K−1 rather than 𝐾 yields an unbiased estimator by correcting the downward bias introduced when the sample mean is used in place of the true population mean
 
 ![output (12)](RS%20week%204.assets/output%20(12).png)
-$$
-r_{ij} = c_{ij} / \sqrt{c_{ii} c_{jj}}
-$$
+
+$$r_{ij} = c_{ij} / \sqrt{c_{ii} c_{jj}}$$
+
 This step is equivalent to eliminating the influence of dimensions using the variable's own scale (standard deviation - 标准差), turning the result into a unitless pure correlation coefficient within the range of [-1, 1]
 
 ## Lecture 17. The principal components transform
@@ -80,22 +78,20 @@ Common image transformations encountered in remote sensing are:
 
 ### The formula derivation of PCA
 
-$$
-\mathbf{C}_y = \mathcal{E} \left\{ (\mathbf{y} - \mathbf{m}_y)(\mathbf{y} - \mathbf{m}_y)^T \right\}①
-$$
+$$\mathbf{C}_y = \mathcal{E} \left[ (\mathbf{y} - \mathbf{m}_y)(\mathbf{y} - \mathbf{m}_y)^T \right]$$
 
 We know:
-$$
-\mathbf{y} = \mathbf{G} \mathbf{x}
-$$
+
+$$\mathbf{y} = \mathbf{G} \mathbf{x}①$$
+
 Then:
-$$
-\mathbf{m}_y = \mathcal{E} \{\mathbf{y}\} = \mathcal{E} \{\mathbf{G}\mathbf{x}\} = \mathbf{G}\mathcal{E} \{\mathbf{x}\} = \mathbf{G}\mathbf{m}_x ②
-$$
+
+$$\mathbf{m}_y = \mathcal{E} \{\mathbf{y}\} = \mathcal{E} \{\mathbf{G}\mathbf{x}\} = \mathbf{G}\mathcal{E} \{\mathbf{x}\} = \mathbf{G}\mathbf{m}_x ②$$
+
 Because of ① and ②
+
 $$
-\mathbf{C}_y = \mathcal{E} \left\{ (\mathbf{G}\mathbf{x} - \mathbf{G}\mathbf{m}_x)(\mathbf{G}\mathbf{x} - \mathbf{G}\mathbf{m}_x)^T \right\} = \mathbf{G}\mathcal{E} \left\{ (\mathbf{x} - \mathbf{m}_x)(\mathbf{x} - \mathbf{m}_x)^T \right\} \mathbf{G}^T = \mathbf{G}\mathbf{C}_x \mathbf{G}^T
-$$
+\mathbf{C}_y = \mathcal{E} \left[ (\mathbf{G}\mathbf{x} - \mathbf{G}\mathbf{m}_x)(\mathbf{G}\mathbf{x} - \mathbf{G}\mathbf{m}_x)^T \right]$$
 
 ### The geometric intuition of PCA
 
