@@ -86,22 +86,11 @@ too fast - Pixel overlap - the recorded image is too broad, not too narrow
 ### Other kinds of geometric distortion
 
 **Effect of earth rotation**
-$$
-\begin{bmatrix}
-x \\\\
-y
-\end{bmatrix}
-=
-\begin{bmatrix}
-1 & \alpha \\\\
-0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-u \\\\
-v
-\end{bmatrix}
-$$
+
+$$\begin{bmatrix}x \\\\y\end{bmatrix}=\begin{bmatrix}1 & \alpha \\\\0 & 1\end{bmatrix}\begin{bmatrix}u \\\\v\end{bmatrix}$$
+
 **Aspect ratio correction** （resulting from over - or under - sampling across the scan line）
+
 $$
 \begin{bmatrix}
 x \\\\
