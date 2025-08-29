@@ -133,7 +133,7 @@ By the end of this course, I aim to:
 
 Below are sample diagrams from my notes:
 
-![](README.assets/The main three methods of resampling.png)
+![](week%207/RS%20week%207.assets/the%20explanation%20and%20meaning%20of%20kernel%20function.png)
 
 As shown in the picture above, I will redraw images using Python or Excalidraw based on my own understanding of the learning content, aiming for efficient and elegant visual expression. These images have been created with a great deal of effort, thus becoming the essence of my study notes.
 
