@@ -44,10 +44,14 @@ Why we would say: "Even if the actual density distribution is not normal, the no
 - A normal model is essentially a "smoothing assumption" that can tolerate deviations and imperfections in data
 - A category can be represented by a combination of multiple normal distributions. In this way, even if the true distribution is complex (multimodal, polymorphic), we can use a set of Gaussian distributions to approximate it
 
+$$
+p(\mathbf{x}\mid\omega_i)=
+\frac{1}{(2\pi)^{N/2}\,\lvert \mathbf{C}_i\rvert^{1/2}}
+\exp\!\left(
+-\tfrac{1}{2}\,(\mathbf{x}-\mathbf{m}_i)^{\mathsf{T}}\mathbf{C}_i^{-1}(\mathbf{x}-\mathbf{m}_i)
+\right).
+$$
 
-$$
-p(\mathbf{x} \mid \omega_i) = (2\pi)^{-N/2} \vert \mathbf{C}_i \vert^{-0.5} \exp \left\{ -\frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i) \right\}
-$$
 where the m_i and C_i completely define the class distribution, and together called the **class signature**
 
 ![The explanation of maximum likelihood classifier](RS%20week%206.assets/The%20explanation%20of%20maximum%20likelihood%20classifier.png)
@@ -56,6 +60,7 @@ where the m_i and C_i completely define the class distribution, and together cal
 
 Bayes theorem:
 $$(1) \quad p(\omega_i \mid \mathbf{x}) = \frac{p(\mathbf{x} \mid \omega_i) p(\omega_i)}{p(\mathbf{x})}$$
+
 Decision rule:
 $$(2) \quad \mathbf{x} \in \omega_i \quad \text{if} \quad p(\omega_i \mid \mathbf{x}) > p(\omega_j \mid \mathbf{x}) \quad \forall \, j \neq i$$
 
@@ -66,8 +71,11 @@ $$
 $$(3) \quad \frac{p(\mathbf{x} \mid \omega_i) p(\omega_i)}{p(\mathbf{x})} > \frac{p(\mathbf{x} \mid \omega_j) p(\omega_j)}{p(\mathbf{x})} \quad \forall \, j \neq i$$
 
 Inequality with the common denominator eliminated
+
 $$(4) \quad p(\mathbf{x} \mid \omega_i) p(\omega_i) > p(\mathbf{x} \mid \omega_j) p(\omega_j) \quad \forall \, j \neq i$$
+
 Get the simplified decision rule
+
 $$(5) \quad \mathbf{x} \in \omega_i \quad \text{if} \quad p(\mathbf{x} \mid \omega_i) p(\omega_i) > p(\mathbf{x} \mid \omega_j) p(\omega_j) \quad \forall \, j \neq i$$
 
 $$
@@ -86,26 +94,33 @@ In the field of remote sensing, the prior probability depends on a rough assessm
 Two events occurring together have a joint probability, denoted as p(x, y) . Since the joint event has no order dependence, p(x, y) = p(y, x)
 
 The joint probability can be expressed using conditional probability:
+
 $$
 \begin{equation}
 p(x, y) = p(x \mid y) p(y)
 \end{equation}
 $$
+
 This means p(x, y) is the product of the conditional probability of \( x \) given \( y \) and the probability of \( y \)
 
 Due to the order independence of the joint probability, we also have:
+
 $$
 \begin{equation}
 p(x, y) = p(y, x) = p(y \mid x) p(x)
 \end{equation}
 $$
+
 Equating the two expressions for \( p(x, y) \):
+
 $$
 \begin{equation}
 p(x \mid y) p(y) = p(y \mid x) p(x)
 \end{equation}
 $$
+
 Rearranging this equation to solve for  p(x | y)  gives Bayes' theorem:
+
 $$
 \begin{equation}
 p(x \mid y) = \frac{p(y \mid x) p(x)}{p(y)}
@@ -119,18 +134,27 @@ $$
 $$(1) \quad \mathbf{x} \in \omega_i \quad \text{if} \quad p(\mathbf{x} \mid \omega_i) p(\omega_i) > p(\mathbf{x} \mid \omega_j) p(\omega_j) \quad \forall \, j \neq i$$
 
 Definition of the discriminant function:
-$$(2) \quad g_i(\mathbf{x}) = \ln \left\{ p(\mathbf{x} \mid \omega_i) p(\omega_i) \right\} = \ln p(\mathbf{x} \mid \omega_i) + \ln p(\omega_i)$$
+
+$$
+(2) \quad g_i(\mathbf{x}) = \ln \left( p(\mathbf{x}\mid\omega_i) \, p(\omega_i) \right)
+$$
 
 Substituting the likelihood of the multivariate normal distribution (p(x|ωᵢ)), we obtain:
-$$(3) \quad p(\mathbf{x} \mid \omega_i) = (2\pi)^{-N/2} \vert \mathbf{C}_i \vert^{-0.5} \exp \left\{ -\frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i) \right\}$$
+
+$$
+(3) \quad \exp \left( -\tfrac{1}{2} (\mathbf{x}-\mathbf{m}_i)^{\mathsf{T}} \mathbf{C}_i^{-1} (\mathbf{x}-\mathbf{m}_i) \right)
+$$
 
 A simplified discriminant function is derived:
+
 $$(4) \quad g_i(\mathbf{x}) = -\frac{1}{2} N \ln 2\pi - \frac{1}{2} \ln \vert \mathbf{C}_i \vert - \frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i) + \ln p(\omega_i)$$
 
 The first term contains no discriminating information and can be removed, leaving as the discriminant function for the Gaussian maximum likelihood rule
+
 $$(5) \quad g_i (\mathbf{x}) = \ln p(\omega_i) - \frac{1}{2} \ln \vert \mathbf{C}_i \vert - \frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i)$$
 
 And the decision rule is:
+
 $$(6) \quad \mathbf{x} \in \omega_i \quad \text{if} \quad g_i (\mathbf{x}) > g_j (\mathbf{x}) \quad \text{for all } j \neq i$$
 
 ### some rules for MLC
