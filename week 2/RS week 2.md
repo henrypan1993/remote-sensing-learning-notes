@@ -33,15 +33,15 @@ Understanding the fundamentals of algorithms helps grasp their limitations and c
 - caused by the shape of the solar the radiation curve
 - caused by the effect of the atmosphere and particularly how the effect of the atmosphere varies with wavelength
 
-![Figure_1](RS week 2.assets/Figure_1.png)
+![Figure_1](RS%20week%202.assets/Figure_1.png)
 
 Addressing distortions caused by instrument characteristics: gain and offset correction (e.g., Z-score standardization and translation)
 
-![Figure_2](RS week 2.assets/Figure_2.png)
+![Figure_2](RS%20week%202.assets/Figure_2.png)
 
 Addressing distortions caused by the shape of the solar radiation spectrum: radiometric calibration with normalization to ensure inter-band comparability
 
-<img src="RS week 2.assets/Understanding the influence of the atmosphere on detector signals.png" alt="Understanding the influence of the atmosphere on detector signals" style="zoom: 50%;" />
+![Understanding the influence of the atmosphere on detector signals](RS%20week%202.assets/Understanding%20the%20influence%20of%20the%20atmosphere%20on%20detector%20signals.png)
 
 Addressing distortions caused by atmospheric effects: removing path radiance and diffuse downwelling radiance from the radiative transfer equation
 
@@ -65,7 +65,7 @@ When we consider the compression effect on image edges, why does this phenomenon
 
 Conception of panoramic distortion or S-bend distortion
 
-![output (7)](RS week 2.assets/output (7).png)Pixels at the image edges cover a larger ground area due to sensor viewing geometry, but are rescaled to match the uniform grid in the projected image
+![output (7)](RS%20week%202.assets/output%20(7).png)Pixels at the image edges cover a larger ground area due to sensor viewing geometry, but are rescaled to match the uniform grid in the projected image
 
 > The visual affect is to give the impression that the image rolls off at the edges
 
@@ -73,7 +73,7 @@ To correct finite acquisition time for scanners
 
 > The scanning window is chosen to exclude the extreme non-linearities at the scan edges
 
-![image-20250810121621977](RS week 2.assets/image-20250810121621977.png)
+![image-20250810121621977](RS%20week%202.assets/image-20250810121621977.png)
 
 too fast - Pixel overlap - the recorded image is too broad, not too narrow
 
@@ -81,7 +81,7 @@ too fast - Pixel overlap - the recorded image is too broad, not too narrow
 
 > The first involves setting up mathematical equations which describe the types of distortion and then using those equations to correct the distortions
 
-![](RS week 2.assets/Geometric correction by mathematical modelling.png)
+![Geometric correction by mathematical modelling](RS%20week%202.assets/Geometric%20correction%20by%20mathematical%20modelling.png)
 
 ### Other kinds of geometric distortion
 

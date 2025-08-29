@@ -18,7 +18,7 @@ All original diagrams © Henry Pan. Course slides are used under fair use for ed
 
 ### Four blocks of remote sensing system
 
-<img src="RS week 1.assets/ChatGPT Image 2025年8月3日 21_57_16.png" alt="ChatGPT Image 2025年8月3日 21_57_16" style="zoom:50%;" />
+![ChatGPT Image 2025年8月3日 21_57_16](RS%20week%201.assets/ChatGPT%20Image%202025年8月3日%2021_57_16.png)
 
 - The first is the energy that is detected by the platform
 - The second is thedownlinking of the signal which carries the information recorded by the detecto
@@ -50,7 +50,7 @@ Remote sensing imaging relies on **atmospheric windows** (i.e., wavebands where 
 
 **Radar remote sensing usually requires illuminating the Earth's surface with artificial energy**. This is because the natural radio energy emitted by the Earth itself is extremely limited. To utilize the atmospheric window with an extremely wide range of radio wave bands, remote sensing platforms generally need to be equipped with a radio receiver.
 
-![The meat of Lecture 2 - The Atmosphere](RS week 1.assets/The meat of Lecture 2 - The Atmosphere.png)
+![The meat of Lecture 2 - The Atmosphere](RS%20week%201.assets/The%20meat%20of%20Lecture%202%20-%20The%20Atmosphere.png)
 
 ## Lecture 3: What platforms are used for imaging the Earth surface?
 
@@ -102,7 +102,7 @@ This part introduces three types of scanner are common
 
 To make the ground dimensions of image pixels as consistent as possible in both directions, thereby balancing the resolution. As a result, the pixels may appear close to **square** in shape, yet the scanning process and its essence lie in the design logic of balanced resolution.
 
-![](RS week 1.assets/How Remote Sensors See the World.png)
+![How Remote Sensors See the World](RS%20week%201.assets/How%20Remote%20Sensors%20See%20the%20World.png)
 
 > With the line scanner that is achieved by placing a dispersive element in the path of the radiation
 
