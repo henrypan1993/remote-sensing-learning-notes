@@ -28,7 +28,7 @@ The main steps of data analysis, and this module focuses on "classification"
 | **Support Vector Machine (SVM)**            | More mathematically complex; separates data using optimal hyperplanes. | Widely used in past 20+ years; effective with hyperspectral datasets. | Requires more computation and parameter tuning.              |
 | **Neural Networks & Deep Learning (NN/DL)** | Applied in remote sensing for ~30 years; recently boosted by convolutional neural networks and deep learning techniques. | Very powerful for complex problems; handles nonlinear relationships well. | Early versions had limited success; requires large data and computational resources. |
 
-![Figure_1](./RS week 6.assets/Figure_1.png)
+![Figure_1](RS%20week%206.assets/Figure_1.png)
 
 Spectral categories are **data-driven**, while information categories are **semantics-driven**. The two do not correspond one-to-one and need to be mapped through classification algorithms
 
@@ -38,7 +38,7 @@ Spectral categories are **data-driven**, while information categories are **sema
 
 Why we would say: "Even if the actual density distribution is not normal, the normal model nevertheless works well"
 
-![Figure_2](./RS week 6.assets/Figure_2.png)
+![Figure_2](RS%20week%206.assets/Figure_2.png)
 
 - Even if the true data distribution is not Gaussian, many natural phenomena will exhibit approximately normal characteristics after being affected by noise superposition or the central limit theorem
 - A normal model is essentially a "smoothing assumption" that can tolerate deviations and imperfections in data
@@ -50,7 +50,7 @@ p(\mathbf{x} \mid \omega_i) = (2\pi)^{-N/2} \vert \mathbf{C}_i \vert^{-0.5} \exp
 $$
 where the m_i and C_i completely define the class distribution, and together called the **class signature**
 
-![The explanation of maximum likelihood classifier](./RS week 6.assets/The explanation of maximum likelihood classifier.png)
+![The explanation of maximum likelihood classifier](RS%20week%206.assets/The%20explanation%20of%20maximum%20likelihood%20classifier.png)
 
 ### Conditional probability Vs Posterior probability
 
@@ -163,7 +163,8 @@ $$
 The first term contains no discriminating information and can be removed, leaving as the discriminant function for the Gaussian maximum likelihood rule
 $$
 \tag{5}
-g_i (\mathbf{x}) = \ln p(\omega_i) - \frac{1}{2} \ln \vert \mathbf{C}_i \vert - \frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i)
+g_i (\mathbf{x}) = \ln p(\omega_i) - \frac{1}{2} \ln \vert \mathbf{C}_i \vert - \frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i)
+
 $$
 And the decision rule is:
 $$
@@ -175,11 +176,11 @@ $$
 
 > Because of the difficulty in assuring independence of the pixels, usually many more than this minimum number are selected. A practical minimum of 10N training pixels per spectral class is recommended,with as many as 100N per class if possible. That was the case for the example just considered
 
-![Minimum Training Samples Required for the Maximum Likelihood Classifier](./RS week 6.assets/Minimum Training Samples Required for the Maximum Likelihood Classifier.png)
+![Minimum Training Samples Required for the Maximum Likelihood Classifier](RS%20week%206.assets/Minimum%20Training%20Samples%20Required%20for%20the%20Maximum%20Likelihood%20Classifier.png)
 
 Normally, we will choose 100 * N. But it will lead to a big problem with the increasing of dimensions, which called **Hughes phenomenon** or **the curse of dimensionality** often referred to in the machine learning literature
 
-![image-20250820180803273](./RS week 6.assets/image-20250820180803273.png)
+![image-20250820180803273](RS%20week%206.assets/image-20250820180803273.png)
 
 *image source: slide 2.3.11 of this course*
 
@@ -187,7 +188,7 @@ This figure also illustrates that 3–4 bands are sufficient to distinguish the 
 
 > Effectively, what our classifiers do is place boundaries between the classes
 
-![](./RS week 6.assets/Figure_1-1755696995140-6.png)
+![Figure_1-1755696995140-6](RS%20week%206.assets/Figure_1-1755696995140-6.png)
 
 > More complicated decision surfaces that can be obtained if we allow more than one spectral class per information class
 
@@ -204,4 +205,4 @@ $$
 \end{cases}
 $$
 
-![Linear classifier simple model and discriminant formula](./RS week 6.assets/Linear classifier simple model and discriminant formula.png)
+![Linear classifier simple model and discriminant formula](RS%20week%206.assets/Linear%20classifier%20simple%20model%20and%20discriminant%20formula.png)

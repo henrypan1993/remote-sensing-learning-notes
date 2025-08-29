@@ -10,7 +10,7 @@ NN was popular in the 1990s, but because of its complexity and computational dem
 
 Threshold logic unit (TLU) was used in the early stages, but it could only represent values of 1 and -1. Therefore, new techniques were developed, which are called activation functions. Some common activation functions:
 
-![](./RS week 8.assets/output (15).png)
+![output (15)](RS%20week%208.assets/output%20(15).png)
 
 | Activation Function | Order of Appearance | Output Range | Main Advantages                                              | Main Drawbacks                        | Improvement                             |
 | ------------------- | ------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------- | --------------------------------------- |
@@ -64,7 +64,7 @@ $$
 | **Advantages**     | - Simple & intuitive  - Easy derivative                  | - Matches probabilistic view  - Faster & more stable training in classification |
 | **Disadvantages**  | - Less efficient for classification - Slower convergence | - Needs outputs in [0,1] (probabilities)                     |
 
-![Evolution of Neural Network Units TLU → PE → MLP](./RS week 8.assets/Evolution of Neural Network Units TLU → PE → MLP.png)
+![Evolution of Neural Network Units TLU → PE → MLP](RS%20week%208.assets/Evolution%20of%20Neural%20Network%20Units%20TLU%20→%20PE%20→%20MLP.png)
 
 ## Lecture 12. Training the neural network
 
@@ -78,7 +78,7 @@ where η is a positive constant, called the learning rate
 
 ---
 
-![Error Convergence & Gradient Descent Zipper and Ski Models](./RS week 8.assets/Error Convergence & Gradient Descent Zipper and Ski Models.png)
+![Error Convergence & Gradient Descent Zipper and Ski Models](RS%20week%208.assets/Error%20Convergence%20%26%20Gradient%20Descent%20Zipper%20and%20Ski%20Models.png)
 
 ---
 
@@ -172,7 +172,7 @@ these mean "Update = learning rate × error term × input"
    - Update each weight using $\Delta w = \eta \delta g$.
    - Repeat until the overall error converges.
 
-![chain rule and back propagation](./RS week 8.assets/chain rule and back propagation-1756306868188-5.png)
+![chain rule and back propagation](RS%20week%208.assets/chain%20rule%20and%20back%20propagation-1756306868188-5.png)
 
 ## Lecture 13. Neural network examples
 
@@ -213,7 +213,7 @@ $$
 Momentum is very common in neural network training; almost all modern optimizers include or inherit the idea of momentum. It can be regarded as a fundamental building block of optimization algorithms
 ```
 
-![](./RS week 8.assets/Figure_1.png)
+![Figure_1](RS%20week%208.assets/Figure_1.png)
 
 **Adapting the learning and momentum rates**
 
@@ -224,10 +224,10 @@ Every forth iteration the authors adjust the learning and momentum rates:
 
 > Training has to be initialized by the choice of a random set of weights
 
-![Techniques for Accelerating Neural Network Convergence](./RS week 8.assets/Techniques for Accelerating Neural Network Convergence.png)
+![Techniques for Accelerating Neural Network Convergence](RS%20week%208.assets/Techniques%20for%20Accelerating%20Neural%20Network%20Convergence.png)
 
 ### Introduce to deep learning
 
 Adding more hidden layers increases the network "depth". A deep learning network has several layers
 
-![Understanding the intent of internal transformations in neural networks](./RS week 8.assets/Understanding the intent of internal transformations in neural networks.png)
+![Understanding the intent of internal transformations in neural networks](RS%20week%208.assets/Understanding%20the%20intent%20of%20internal%20transformations%20in%20neural%20networks.png)

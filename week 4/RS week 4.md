@@ -10,7 +10,7 @@ All original diagrams © Henry Pan. Course slides are used under fair use for ed
 
 First step: training the classifier
 
-![The foundation of machine learning in RS](./RS week 4.assets/The foundation of machine learning in RS.png)
+![The foundation of machine learning in RS](RS%20week%204.assets/The%20foundation%20of%20machine%20learning%20in%20RS.png)
 
 - Each pixel is described by a set of brightness values from multiple spectral bands (**pixel vector**)
 - Known pixels from ground truth are used to train the classifier and set decision boundaries in **spectral space**
@@ -19,7 +19,7 @@ First step: training the classifier
 
 **Question: In two dimensions, how do you think we might find the lines that separate the three classes in the example in this lecture**
 
-![](./RS week 4.assets/A simple approach is to find the mean vector of each class.png)
+![A simple approach is to find the mean vector of each class](RS%20week%204.assets/A%20simple%20approach%20is%20to%20find%20the%20mean%20vector%20of%20each%20class.png)
 
 ## Lecture 15. Classification: some more detail
 
@@ -53,7 +53,7 @@ In remote sensing, the high dimensionality of spectral data makes linear algebra
 
 ## Lecture 16. Correlation and covariance
 
-![output (11)](./RS week 4.assets/output (11).png)
+![output (11)](RS%20week%204.assets/output%20(11).png)
 
 > The mean vector tells us the average position of pixels in the spectral domain. We would also like to know how they spread about that **mean position**. That is the role of the **covariance matrix**, which is the multidimensional form of the variance (square of standard deviation) of the normal distribution in one dimension
 
@@ -63,7 +63,7 @@ $$
 
 When estimating variance or covariance from sample data, dividing by K−1 rather than 𝐾 yields an unbiased estimator by correcting the downward bias introduced when the sample mean is used in place of the true population mean
 
-![output (12)](./RS week 4.assets/output (12).png)
+![output (12)](RS%20week%204.assets/output%20(12).png)
 $$
 r_{ij} = c_{ij} / \sqrt{c_{ii} c_{jj}}
 $$
@@ -99,7 +99,7 @@ $$
 
 ### The geometric intuition of PCA
 
-![Geometric intuition of principal components analysis (PCA) ](./RS week 4.assets/Geometric intuition of principal components analysis (PCA) .png)
+![Geometric intuition of principal components analysis (PCA)](RS%20week%204.assets/Geometric%20intuition%20of%20principal%20components%20analysis%20(PCA)%20.png)
 
 - PCA is a rotation of the coordinate system that transforms correlation into uncorrelation
 - The shape of the ellipse remains unchanged; it only gets "aligned"
@@ -115,4 +115,4 @@ In summary, **Principal Component Analysis (PCA) can be understood from three pe
 
 matrix multiplication and vector multiplication are non-commutative, the order is very important
 
-![Dot Product vs Outer Product](./RS week 4.assets/Dot Product vs Outer Product.png)
+![Dot Product vs Outer Product](RS%20week%204.assets/Dot%20Product%20vs%20Outer%20Product.png)

@@ -13,11 +13,11 @@ The main four steps:
 - Rank ordering the eigenvalues to identify the first, second and subsequent principal components 
 - Using the transposed matrix of eigenvectors in y= Gx to generate the new brightness values for the image pixels in the new principal component axes
 
-![](./RS week 5.assets/The main four steps of PCA and their geometric intuition.png)
+![The main four steps of PCA and their geometric intuition](RS%20week%205.assets/The%20main%20four%20steps%20of%20PCA%20and%20their%20geometric%20intuition.png)
 
 ## Lecture 19. The principal components transform: a real example
 
-![image-20250817204358037](./RS week 5.assets/image-20250817204358037.png)
+![image-20250817204358037](RS%20week%205.assets/image-20250817204358037.png)
 
 *image source: slide 1.19.3 of this course*
 
@@ -44,7 +44,7 @@ In summary:
 
 ### To compress data
 
-![output (13)](./RS week 5.assets/output (13).png)
+![output (13)](RS%20week%205.assets/output%20(13).png)
 
 Discretization noise means that when there is too little remaining information, the sensor's own digitization limitations "override" the real signal
 
@@ -57,11 +57,11 @@ For data compression:
 
 ### To reduce the number of features(bands)
 
-![Why PCA can reduce the features or the dimensionality](./RS week 5.assets/Why PCA can reduce the features or the dimensionality.png)
+![Why PCA can reduce the features or the dimensionality](RS%20week%205.assets/Why%20PCA%20can%20reduce%20the%20features%20or%20the%20dimensionality.png)
 
 ### to detect changes between images
 
-![Why PCA can be used to analyze a dynamic event](./RS week 5.assets/Why PCA can be used to analyze a dynamic event.png)
+![Why PCA can be used to analyze a dynamic event](RS%20week%205.assets/Why%20PCA%20can%20be%20used%20to%20analyze%20a%20dynamic%20event.png)
 
 | Component | Eigenvalue | Col1  | Col2  | Col3  | Col4  | Col5  | Col6  | Col7  | Col8  |
 | --------- | ---------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |

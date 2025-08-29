@@ -8,7 +8,7 @@ All original diagrams © Henry Pan. Course slides are used under fair use for ed
 
 > In remote sensing, don't necessarily use a complicated classifier when a simple one will do the job just as well
 
-![The mechanism of minimum distance classifier](./RS week 7.assets/The mechanism of minimum distance classifier.png)
+![The mechanism of minimum distance classifier](RS%20week%207.assets/The%20mechanism%20of%20minimum%20distance%20classifier.png)
 
 ### The deviation of decision rule
 
@@ -63,7 +63,7 @@ There are 4 main steps:
 - **Stage 3**：Manage datasets that can’t be separated linearly
 - **Stage 4**：Deal with classification tasks involving over two pixel classes
 
-![The SVM - calculating the margin.](./RS week 7.assets/The SVM - calculating the margin..png)
+![The SVM - calculating the margin](RS%20week%207.assets/The%20SVM%20-%20calculating%20the%20margin..png)
 
  The perpendicular distance from a point X_0 to a plane, in general is:
 $$
@@ -146,9 +146,9 @@ $$
 
 ### SVM: Primal vs Dual Comparison
 
-![image-20250822214815683](./RS week 7.assets/image-20250822214815683.png)
+![image-20250822214815683](RS%20week%207.assets/image-20250822214815683.png)
 
-![The mechanism of support vector machine](./RS week 7.assets/The mechanism of support vector machine.png)
+![The mechanism of support vector machine](RS%20week%207.assets/The%20mechanism%20of%20support%20vector%20machine.png)
 
 **Support vectors** are the key players — only these boundary points ($\alpha_i > 0$) influence the decision surface
 
@@ -172,7 +172,7 @@ C balances this tension.
 (5) w is a learned parameter during training, while 𝐶 is a hyperparameter set manually to guide the optimization objective.
 ```
 
-![Soft-Margin SVM Tolerance, Constraints, and the Role of C](./RS week 7.assets/Soft-Margin SVM Tolerance, Constraints, and the Role of C.png)
+![Soft-Margin SVM Tolerance, Constraints, and the Role of C](RS%20week%207.assets/Soft-Margin%20SVM%20Tolerance%2C%20Constraints%2C%20and%20the%20Role%20of%20C.png)
 $$
 z = \text{sgn}\{\mathbf{w}^\text{T}\mathbf{x} + w_{N+1}\} = \text{sgn}\left\{\sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i^\text{T}\mathbf{x} + w_{N+1}\right\}
 $$
@@ -295,13 +295,13 @@ k(\mathbf{y}, \mathbf{x}) = \begin{bmatrix} x_1^2 & \sqrt{2} x_1 x_2 & x_2^2 \en
 $$
 thus k can be expressed as a scalar product
 
-![the explanation and meaning of kernel function](./RS week 7.assets/the explanation and meaning of kernel function.png)
+![the explanation and meaning of kernel function](RS%20week%207.assets/the%20explanation%20and%20meaning%20of%20kernel%20function.png)
 
 ## Lecture 8. The support vector machine: non-linear data
 
 In this part, we want to turn the binary classifier into that will handle many classes, the simplest way is the **decision tree**.
 
-![How to turn the binary classifier into multi classifier](./RS week 7.assets/How to turn the binary classifier into multi classifier.png)
+![How to turn the binary classifier into multi classifier](RS%20week%207.assets/How%20to%20turn%20the%20binary%20classifier%20into%20multi%20classifier.png)
 
 ### Multi-class SVM Strategies
 
@@ -358,7 +358,7 @@ flowchart LR
 - **Spectral class** = subdivisions within an information class to improve classification accuracy.
 - In practice, **one information class may correspond to several spectral classes**.
 
-![image-20250824190427884](./RS week 7.assets/image-20250824190427884.png)
+![image-20250824190427884](RS%20week%207.assets/image-20250824190427884.png)
 
 *image source: slide 2.10.4 of this course*
 
@@ -368,8 +368,8 @@ we have to choose:
 - the multiclass strategy to use
 - the value of the regularization parameter C
 
-![Grid-search method and its simpler version](./RS week 7.assets/Grid-search method and its simpler version.png)
+![Grid-search method and its simpler version](RS%20week%207.assets/Grid-search%20method%20and%20its%20simpler%20version.png)
 
-![image-20250824202546321](./RS week 7.assets/image-20250824202546321.png)
+![image-20250824202546321](RS%20week%207.assets/image-20250824202546321.png)
 
 *image source: slide 2.10.8 of this course*
