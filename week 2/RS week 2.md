@@ -91,53 +91,17 @@ $$\begin{bmatrix}x \\\\y\end{bmatrix}=\begin{bmatrix}1 & \alpha \\\\0 & 1\end{bm
 
 **Aspect ratio correction** （resulting from over - or under - sampling across the scan line）
 
-$$
-\begin{bmatrix}
-x \\\\
-y
-\end{bmatrix}
-=
-\begin{bmatrix}
-1 & 0 \\\\
-0 & \beta
-\end{bmatrix}
-\begin{bmatrix}
-u \\\\
-v
-\end{bmatrix}
-$$
+$$\begin{bmatrix}x \\\\y\end{bmatrix}=\begin{bmatrix}1 & 0 \\\\0 & \beta\end{bmatrix}\begin{bmatrix}u \\\\v\end{bmatrix}$$
+
 **Panoramic effects**
-$$
-\begin{bmatrix}
-x \\\\
-y
-\end{bmatrix}
-=
-\begin{bmatrix}
-\tan{\theta} & 0 \\\\
-0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-u \\\\
-v
-\end{bmatrix}
-$$
+
+$$\begin{bmatrix}x \\\\y\end{bmatrix}=\begin{bmatrix}\tan{\theta} & 0 \\\\0 & 1\end{bmatrix}\begin{bmatrix}u \\\\v\end{bmatrix}$$
+
 **Image orientation to north - south**
-$$
-\begin{bmatrix}
-x \\\\
-y
-\end{bmatrix}
-=
-\begin{bmatrix}
-\cos{\zeta} & \sin{\zeta} \\\\
--\sin{\zeta} & \cos{\zeta}
-\end{bmatrix}
-\begin{bmatrix}
-u \\\\
-v
-\end{bmatrix}
-$$
+
+$$\begin{bmatrix}x \\\\y\end{bmatrix}=\begin{bmatrix}\cos{\zeta} & \sin{\zeta} \\\\-\sin{\zeta} & \cos{\zeta}
+\end{bmatrix}\begin{bmatrix}u \\\\v\end{bmatrix}$$
+
 These corrections use **linear transformations** to map the original pixel coordinates $(u, v)$ into a new coordinate system $(x, y)$
 
 Each transformation matrix corresponds to a specific geometric distortion model (e.g., Earth rotation, aspect ratio, panoramic effect, orientation)
