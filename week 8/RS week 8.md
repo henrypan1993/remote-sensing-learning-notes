@@ -14,10 +14,10 @@ Threshold logic unit (TLU) was used in the early stages, but it could only repre
 
 | Activation Function | Order of Appearance | Output Range | Main Advantages                                              | Main Drawbacks                        | Improvement                             |
 | ------------------- | ------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------- | --------------------------------------- |
-| Sigmoid             | Earliest            | (0, 1)       | Smooth, differentiable; used for binary classification output | Gradient vanishing; not zero-centered | —                                       |
+| Sigmoid             | Earliest            | (0, 1)       | Smooth, differentiable; used for binary classification output | Gradient vanishing; not zero-centered | �?                                      |
 | tanh                | Second              | (-1, 1)      | Zero-centered; faster convergence                            | Still suffers from gradient vanishing | Fixes Sigmoid's non-zero-centered issue |
-| ReLU                | Third               | [0, ∞)       | Solves gradient vanishing; computationally efficient         | Dead neuron problem                   | Addresses tanh's gradient vanishing     |
-| Leaky ReLU          | Fourth              | (-∞, ∞)      | Mitigates dead neuron issue                                  | Requires hyperparameter α             | Fixes ReLU's dead neuron issue          |
+| ReLU                | Third               | [0, �?       | Solves gradient vanishing; computationally efficient         | Dead neuron problem                   | Addresses tanh's gradient vanishing     |
+| Leaky ReLU          | Fourth              | (-�? �?      | Mitigates dead neuron issue                                  | Requires hyperparameter α             | Fixes ReLU's dead neuron issue          |
 
 Among them, Sigmoid could be expressed like:
 
@@ -36,7 +36,7 @@ $$g = f(z) = \frac{1}{1 + \exp(-z/b)}$$
 
 | Concept               | Traditional (older NN / signal processing) | Modern DL / ML (deep learning texts)         |
 | --------------------- | ------------------------------------------ | -------------------------------------------- |
-| **Weights**           | $w_{ji}$ → from neuron $i$ to neuron $j$   | $W^{(l)}$ → weight matrix of layer $l$       |
+| **Weights**           | $w_{ji}$ �?from neuron $i$ to neuron $j$   | $W^{(l)}$ �?weight matrix of layer $l$       |
 | **Bias / Offset**     | $\theta_j$                                 | $b_j$ (bias vector $b^{(l)}$)                |
 | **Net Input**         | $z_j = \sum_i w_{ji} g_i + \theta_j$       | $z^{(l)} = W^{(l)} h^{(l-1)} + b^{(l)}$      |
 | **Activation Output** | $g_j = f(z_j)$                             | $h^{(l)} = f(z^{(l)})$, sometimes $y_j$      |
@@ -50,7 +50,7 @@ Squared Error - 均方误差
 
 $$E = \frac{1}{2} \sum (t - g)^2$$
 
-Cross-Entropy - 交叉熵
+Cross-Entropy - 交叉�?
 
 $$E = -\sum t \log(g)$$
 
@@ -62,7 +62,7 @@ $$E = -\sum t \log(g)$$
 | **Advantages**     | - Simple & intuitive  - Easy derivative                  | - Matches probabilistic view  - Faster & more stable training in classification |
 | **Disadvantages**  | - Less efficient for classification - Slower convergence | - Needs outputs in [0,1] (probabilities)                     |
 
-![Evolution of Neural Network Units TLU → PE → MLP](RS%20week%208.assets/Evolution%20of%20Neural%20Network%20Units%20TLU%20→%20PE%20→%20MLP.png)
+![Evolution of Neural Network Units TLU �?PE �?MLP](RS%20week%208.assets/Evolution%20of%20Neural%20Network%20Units%20TLU%20�?20PE%20�?20MLP.png)
 
 ## Lecture 12. Training the neural network
 

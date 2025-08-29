@@ -70,15 +70,9 @@ $$
 \frac{|\boldsymbol{w}^\mathrm{T}\boldsymbol{x}_0 + w_{N+1}|}{\|\boldsymbol{w}\|}
 $$
 if X_0 = 0, the original, and the plane is the right hand marginal hyperplane:
-$$
-\tag{d1}
-\frac{|1 + w_{N+1}|}{\|\boldsymbol{w}\|}
-$$
+$$(d1) \quad \frac{|1 + w_{N+1}|}{\|\boldsymbol{w}\|}$$
 likewise
-$$
-\tag{d2}
-\frac{|-1 + w_{N+1}|}{\|\boldsymbol{w}\|}
-$$
+$$(d2) \quad \frac{|-1 + w_{N+1}|}{\|\boldsymbol{w}\|}$$
 d1-d2, then
 $$
 \text{margin} = \frac{2}{\|\boldsymbol{w}\|} 
@@ -88,61 +82,19 @@ to maximize the margin means to minimize ||w||, but we have to consider the prob
 #### Support Vector Machine: Lagrange Formulation and Derivation
 
 Defines the initial Lagrange for SVM margin maximization, including the weight vector norm, Lagrange multipliers, and general constraints
-$$
-% 初始拉格朗日函数，用于支持向量机最大化间隔问题
-\begin{equation}
-\mathcal{L} = \frac{1}{2} \|\mathbf{w}\|^2 - \sum_{i} \alpha_i f_i \tag{1}
-\end{equation}
-% 注释：$\mathcal{L}$ 为拉格朗日函数，$\|\mathbf{w}\|^2$ 是权重向量 $\mathbf{w}$ 的范数平方，$\alpha_i$ 是拉格朗日乘子，$f_i$ 是约束条件（后续会替换具体形式）
-$$
+$$(1) \quad \mathcal{L} = \frac{1}{2} \|\mathbf{w}\|^2 - \sum_{i} \alpha_i f_i$$
 Updates the Lagrange by substituting constraints with a specific form involving class labels, sample vectors, and the bias term
-$$
-% 替换约束条件 $f_i = y_i(\mathbf{w}^\mathrm{T}\mathbf{x}_i + w_{N+1}) - 1$ 后的拉格朗日函数
-\begin{equation}
-\mathcal{L} = \frac{1}{2} \|\mathbf{w}\|^2 - \sum_{i} \alpha_i \left\{ y_i(\mathbf{w}^\mathrm{T}\mathbf{x}_i + w_{N+1}) - 1 \right\} \tag{2}
-\end{equation}
-% 注释：$y_i$ 是训练样本的类别标签（+1 或 -1），$\mathbf{x}_i$ 是训练样本向量，$w_{N+1}$ 是偏置项相关参数，这里完成了约束条件的替换
-$$
+$$(2) \quad \mathcal{L} = \frac{1}{2} \|\mathbf{w}\|^2 - \sum_{i} \alpha_i \left\{ y_i(\mathbf{w}^\mathrm{T}\mathbf{x}_i + w_{N+1}) - 1 \right\}$$
 Derives the weight vector as a linear combination of training samples by taking the partial derivative of the Lagrange with respect to the weight vector and setting it to zero
-$$
-% 对拉格朗日函数 $\mathcal{L}$ 关于权重向量 $\mathbf{w}$ 求偏导并令其为 0，得到权重向量的表达式
-\begin{equation}
-\frac{\partial \mathcal{L}}{\partial \mathbf{w}} = \mathbf{w} - \sum_{i} \alpha_i y_i \mathbf{x}_i = 0 \implies \mathbf{w} = \sum_{i} \alpha_i y_i \mathbf{x}_i \tag{3}
-\end{equation}
-% 注释：通过对 $\mathbf{w}$ 求偏导并置零，推导得出权重向量 $\mathbf{w}$ 可由拉格朗日乘子 $\alpha_i$、类别标签 $y_i$ 和样本向量 $\mathbf{x}_i$ 线性组合表示
-$$
+$$(3) \quad \frac{\partial \mathcal{L}}{\partial \mathbf{w}} = \mathbf{w} - \sum_{i} \alpha_i y_i \mathbf{x}_i = 0 \implies \mathbf{w} = \sum_{i} \alpha_i y_i \mathbf{x}_i$$
 Enforces a constraint on Lagrange multipliers and class labels by taking the partial derivative of the Lagrange with respect to the bias term and setting it to zero
-$$
-% 对拉格朗日函数 $\mathcal{L}$ 关于 $w_{N+1}$ 求偏导的结果
-\begin{equation}
-\frac{\partial \mathcal{L}}{\partial w_{N+1}} = -\sum_{i} \alpha_i y_i = 0 \tag{4}
-\end{equation}
-% 注释：对偏置项相关参数 $w_{N+1}$ 求偏导，得到拉格朗日乘子与类别标签的约束关系，虽未直接解出 $w_{N+1}$，但后续用于简化拉格朗日函数
-$$
+$$(4) \quad \frac{\partial \mathcal{L}}{\partial w_{N+1}} = -\sum_{i} \alpha_i y_i = 0$$
 Rewrites the Lagrange in dual form using prior results, focusing on optimizing Lagrange multipliers directly
-$$
-% 利用前面推导结果（式 3、式 4）简化得到的拉格朗日函数对偶形式
-\begin{equation}
-\mathcal{L} = \sum_{i} \alpha_i - \frac{1}{2} \sum_{i,j} \alpha_i \alpha_j y_i y_j \mathbf{x}_j^\mathrm{T} \mathbf{x}_i \tag{5}
-\end{equation}
-% 注释：通过代入权重向量表达式和 $w_{N+1}$ 相关偏导结果，将拉格朗日函数转化为仅关于拉格朗日乘子 $\alpha_i$ 的对偶形式，方便后续求解
-$$
+$$(5) \quad \mathcal{L} = \sum_{i} \alpha_i - \frac{1}{2} \sum_{i,j} \alpha_i \alpha_j y_i y_j \mathbf{x}_j^\mathrm{T} \mathbf{x}_i$$
 States the KKT condition, where either a Lagrange multiplier is zero or the corresponding sample lies on the margin hyperplane
-$$
-% 支持向量机中的 KKT 条件，用于约束拉格朗日乘子和样本的位置关系
-\begin{equation}
-\alpha_i \left\{ y_i(\mathbf{w}^\mathrm{T}\mathbf{x}_i + w_{N+1}) - 1 \right\} = 0 \tag{6}
-\end{equation}
-% 注释：KKT 条件表明，要么拉格朗日乘子 $\alpha_i = 0$，要么样本 $\mathbf{x}_i$ 位于边际超平面上（此时括号内项为 0），位于边际超平面上的样本就是支持向量
-$$
+$$(6) \quad \alpha_i \left\{ y_i(\mathbf{w}^\mathrm{T}\mathbf{x}_i + w_{N+1}) - 1 \right\} = 0$$
 Simplifies the weight vector expression to include only support vectors, leveraging the KKT condition to reduce complexity
-$$
-% 利用 KKT 条件，仅用支持向量表示的权重向量公式（$\mathcal{S}$ 为支持向量集合）
-\begin{equation}
-\mathbf{w} = \sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i \tag{7}
-\end{equation}
-% 注释：结合 KKT 条件，只有支持向量（位于边际超平面上的样本）对应的 $\alpha_i$ 非零，因此权重向量可仅由支持向量线性组合表示，大幅简化计算
-$$
+$$(7) \quad \mathbf{w} = \sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i$$
 
 ### SVM: Primal vs Dual Comparison
 
@@ -177,15 +129,9 @@ $$
 z = \text{sgn}\{\mathbf{w}^\text{T}\mathbf{x} + w_{N+1}\} = \text{sgn}\left\{\sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i^\text{T}\mathbf{x} + w_{N+1}\right\}
 $$
 then the simplest approach is to choose a support vector from each class, called x(1) and x(-1)
-$$
-\tag{1}
-(\mathbf{w}^\text{T}\mathbf{x}(-1) + w_{N+1}) - 1 = 0
-$$
+$$(1) \quad (\mathbf{w}^\text{T}\mathbf{x}(-1) + w_{N+1}) - 1 = 0$$
 
-$$
-\tag{2}
-(\mathbf{w}^\text{T}\mathbf{x}(1) + w_{N+1}) + 1 = 0
-$$
+$$(2) \quad (\mathbf{w}^\text{T}\mathbf{x}(1) + w_{N+1}) + 1 = 0$$
 
 because of (1) + (2),
 $$
@@ -208,15 +154,9 @@ $$
 \frac{1}{2} \|\mathbf{w}\| + C \sum_{i} \xi_i
 $$
 introduce two constrains:
-$$
-\tag{A}
-y_i(\mathbf{w}^T \mathbf{x}_i + w_{N+1}) \geq 1 - \xi_i
-$$
+$$(A) \quad y_i(\mathbf{w}^T \mathbf{x}_i + w_{N+1}) \geq 1 - \xi_i$$
 (A) means If $\xi_i = 0$, the point must lie strictly outside the margin; if $\xi_i > 0$, the point is allowed to enter the margin or even be misclassified
-$$
-\tag{B}
-\xi_i \geq 0
-$$
+$$(B) \quad \xi_i \geq 0$$
 (B) means Slack variables must be non-negative; they cannot cancel the classification condition
 
 we can get the equation:

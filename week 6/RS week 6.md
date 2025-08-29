@@ -55,46 +55,26 @@ where the m_i and C_i completely define the class distribution, and together cal
 ### Conditional probability Vs Posterior probability
 
 Bayes theorem:
-$$
-\tag{1}
-p(\omega_i \mid \mathbf{x}) = \frac{p(\mathbf{x} \mid \omega_i) p(\omega_i)}{p(\mathbf{x})}
-$$
+$$(1) \quad p(\omega_i \mid \mathbf{x}) = \frac{p(\mathbf{x} \mid \omega_i) p(\omega_i)}{p(\mathbf{x})}$$
 Decision rule:
-$$
-\tag{2}
-\mathbf{x} \in \omega_i \quad \text{if} \quad p(\omega_i \mid \mathbf{x}) > p(\omega_j \mid \mathbf{x}) \quad \forall \, j \neq i
-$$
+$$(2) \quad \mathbf{x} \in \omega_i \quad \text{if} \quad p(\omega_i \mid \mathbf{x}) > p(\omega_j \mid \mathbf{x}) \quad \forall \, j \neq i$$
 
 $$
 because (1)(2)
 $$
 
-$$
-\tag{3}
-\frac{p(\mathbf{x} \mid \omega_i) p(\omega_i)}{p(\mathbf{x})} > \frac{p(\mathbf{x} \mid \omega_j) p(\omega_j)}{p(\mathbf{x})} \quad \forall \, j \neq i
-$$
+$$(3) \quad \frac{p(\mathbf{x} \mid \omega_i) p(\omega_i)}{p(\mathbf{x})} > \frac{p(\mathbf{x} \mid \omega_j) p(\omega_j)}{p(\mathbf{x})} \quad \forall \, j \neq i$$
 
 Inequality with the common denominator eliminated
-$$
-\tag{4}
-p(\mathbf{x} \mid \omega_i) p(\omega_i) > p(\mathbf{x} \mid \omega_j) p(\omega_j) \quad \forall \, j \neq i
-$$
+$$(4) \quad p(\mathbf{x} \mid \omega_i) p(\omega_i) > p(\mathbf{x} \mid \omega_j) p(\omega_j) \quad \forall \, j \neq i$$
 Get the simplified decision rule
-$$
-\tag{5}
-\mathbf{x} \in \omega_i \quad \text{if} \quad p(\mathbf{x} \mid \omega_i) p(\omega_i) > p(\mathbf{x} \mid \omega_j) p(\omega_j) \quad \forall \, j \neq i
-$$
+$$(5) \quad \mathbf{x} \in \omega_i \quad \text{if} \quad p(\mathbf{x} \mid \omega_i) p(\omega_i) > p(\mathbf{x} \mid \omega_j) p(\omega_j) \quad \forall \, j \neq i$$
 
 $$
 \text{If it is assumed that the prior probabilities of all classes are equal } (p(\omega_i) = p(\omega_j)), \text{ then it degenerates to} 
 $$
 
-$$
-\begin{equation}
-\tag{6}
-\mathbf{x} \in \omega_i \quad \text{if} \quad p(\mathbf{x} \mid \omega_i) > p(\mathbf{x} \mid \omega_j) \quad \forall \, j \neq i
-\end{equation}
-$$
+$$(6) \quad \mathbf{x} \in \omega_i \quad \text{if} \quad p(\mathbf{x} \mid \omega_i) > p(\mathbf{x} \mid \omega_j) \quad \forall \, j \neq i$$
 
 
 This is the **Maximum Likelihood Classifier** (MLC)
@@ -136,41 +116,22 @@ $$
 
 ### A more concise form of the discriminant function
 
-$$
-% 决策规则（简化表述）
-\tag{1}
-\mathbf{x} \in \omega_i \quad \text{if} \quad p(\mathbf{x} \mid \omega_i) p(\omega_i) > p(\mathbf{x} \mid \omega_j) p(\omega_j) \quad \forall \, j \neq i
-$$
+$$(1) \quad \mathbf{x} \in \omega_i \quad \text{if} \quad p(\mathbf{x} \mid \omega_i) p(\omega_i) > p(\mathbf{x} \mid \omega_j) p(\omega_j) \quad \forall \, j \neq i$$
 
 Definition of the discriminant function:
-$$
-% 判别函数定义
-\tag{2}
-g_i(\mathbf{x}) = \ln \left\{ p(\mathbf{x} \mid \omega_i) p(\omega_i) \right\} = \ln p(\mathbf{x} \mid \omega_i) + \ln p(\omega_i)
-$$
-Substituting the likelihood of the multivariate normal distribution (p(x|ωᵢ)), we obtain:
-$$
-% 代入多元正态分布的似然（p(x|ωᵢ)）
-\tag{3}
-p(\mathbf{x} \mid \omega_i) = (2\pi)^{-N/2} \vert \mathbf{C}_i \vert^{-0.5} \exp \left\{ -\frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i) \right\}
-$$
-A simplified discriminant function is derived:
-$$
-% 推导得到简化的判别函数
-\tag{4}
-g_i(\mathbf{x}) = -\frac{1}{2} N \ln 2\pi - \frac{1}{2} \ln \vert \mathbf{C}_i \vert - \frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i) + \ln p(\omega_i)
-$$
-The first term contains no discriminating information and can be removed, leaving as the discriminant function for the Gaussian maximum likelihood rule
-$$
-\tag{5}
-g_i (\mathbf{x}) = \ln p(\omega_i) - \frac{1}{2} \ln \vert \mathbf{C}_i \vert - \frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i)
+$$(2) \quad g_i(\mathbf{x}) = \ln \left\{ p(\mathbf{x} \mid \omega_i) p(\omega_i) \right\} = \ln p(\mathbf{x} \mid \omega_i) + \ln p(\omega_i)$$
 
-$$
+Substituting the likelihood of the multivariate normal distribution (p(x|ωᵢ)), we obtain:
+$$(3) \quad p(\mathbf{x} \mid \omega_i) = (2\pi)^{-N/2} \vert \mathbf{C}_i \vert^{-0.5} \exp \left\{ -\frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i) \right\}$$
+
+A simplified discriminant function is derived:
+$$(4) \quad g_i(\mathbf{x}) = -\frac{1}{2} N \ln 2\pi - \frac{1}{2} \ln \vert \mathbf{C}_i \vert - \frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i) + \ln p(\omega_i)$$
+
+The first term contains no discriminating information and can be removed, leaving as the discriminant function for the Gaussian maximum likelihood rule
+$$(5) \quad g_i (\mathbf{x}) = \ln p(\omega_i) - \frac{1}{2} \ln \vert \mathbf{C}_i \vert - \frac{1}{2} (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} \mathbf{C}_i^{-1} (\mathbf{x} - \mathbf{m}_i)$$
+
 And the decision rule is:
-$$
-\tag{6}
-\mathbf{x} \in \omega_i \quad \text{if} \quad g_i (\mathbf{x}) > g_j (\mathbf{x}) \quad \text{for all } j \neq i
-$$
+$$(6) \quad \mathbf{x} \in \omega_i \quad \text{if} \quad g_i (\mathbf{x}) > g_j (\mathbf{x}) \quad \text{for all } j \neq i$$
 
 ### some rules for MLC
 
