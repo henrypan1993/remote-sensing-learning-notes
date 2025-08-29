@@ -13,26 +13,16 @@ All original diagrams © Henry Pan. Course slides are used under fair use for ed
 ### The deviation of decision rule
 
 If the distances are to be equal：
-$$
-d(\mathbf{x}, \mathbf{m}_i)^2 = d(\mathbf{x}, \mathbf{m}_j)^2 \\
-$$
+$$d(\mathbf{x}, \mathbf{m}_i)^2 = d(\mathbf{x}, \mathbf{m}_j)^2$$
 Now, from vector Euclidean geometry the squared magnitudes of the distances are
-$$
-d(\mathbf{x}, \mathbf{m}_i)^2 = (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} (\mathbf{x} - \mathbf{m}_i) \\
-$$
+$$d(\mathbf{x}, \mathbf{m}_i)^2 = (\mathbf{x} - \mathbf{m}_i)^\mathrm{T} (\mathbf{x} - \mathbf{m}_i)$$
 
-$$
-d(\mathbf{x}, \mathbf{m}_j)^2 = (\mathbf{x} - \mathbf{m}_j)^\mathrm{T} (\mathbf{x} - \mathbf{m}_j) \\
-$$
+$$d(\mathbf{x}, \mathbf{m}_j)^2 = (\mathbf{x} - \mathbf{m}_j)^\mathrm{T} (\mathbf{x} - \mathbf{m}_j)$$
 
 Giving
-$$
-\mathbf{x}^\mathrm{T}\mathbf{x} - \mathbf{m}_i^\mathrm{T}\mathbf{x} - \mathbf{x}^\mathrm{T}\mathbf{m}_i + \mathbf{m}_i^\mathrm{T}\mathbf{m}_i = \mathbf{x}^\mathrm{T}\mathbf{x} - \mathbf{m}_j^\mathrm{T}\mathbf{x} - \mathbf{x}^\mathrm{T}\mathbf{m}_j + \mathbf{m}_j^\mathrm{T}\mathbf{m}_j \\
-$$
+$$\mathbf{x}^\mathrm{T}\mathbf{x} - \mathbf{m}_i^\mathrm{T}\mathbf{x} - \mathbf{x}^\mathrm{T}\mathbf{m}_i + \mathbf{m}_i^\mathrm{T}\mathbf{m}_i = \mathbf{x}^\mathrm{T}\mathbf{x} - \mathbf{m}_j^\mathrm{T}\mathbf{x} - \mathbf{x}^\mathrm{T}\mathbf{m}_j + \mathbf{m}_j^\mathrm{T}\mathbf{m}_j$$
 so that, noting：
-$$
-\mathbf{y}^\mathrm{T}\mathbf{z} = \mathbf{z}^\mathrm{T}\mathbf{y} \text{ and } (\mathbf{y}^\mathrm{T} + \mathbf{z}^\mathrm{T}) = (\mathbf{y} + \mathbf{z})^\mathrm{T} \\
-$$
+$$\mathbf{y}^\mathrm{T}\mathbf{z} = \mathbf{z}^\mathrm{T}\mathbf{y} \text{ and } (\mathbf{y}^\mathrm{T} + \mathbf{z}^\mathrm{T}) = (\mathbf{y} + \mathbf{z})^\mathrm{T}$$
 Then
 $$
 2(\mathbf{m}_j - \mathbf{m}_i)^\mathrm{T} \mathbf{x} + (\mathbf{m}_i^\mathrm{T}\mathbf{m}_i - \mathbf{m}_j^\mathrm{T}\mathbf{m}_j) = 0
@@ -126,16 +116,16 @@ C balances this tension.
 
 ![Soft-Margin SVM Tolerance, Constraints, and the Role of C](RS%20week%207.assets/Soft-Margin%20SVM%20Tolerance%2C%20Constraints%2C%20and%20the%20Role%20of%20C.png)
 $$
-z = \text{sgn}\{\mathbf{w}^\text{T}\mathbf{x} + w_{N+1}\} = \text{sgn}\left\{\sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i^\text{T}\mathbf{x} + w_{N+1}\right\}
+z = \text{sgn}\{\mathbf{w}^\mathrm{T}\mathbf{x} + w_{N+1}\} = \text{sgn}\left\{\sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i^\mathrm{T}\mathbf{x} + w_{N+1}\right\}
 $$
 then the simplest approach is to choose a support vector from each class, called x(1) and x(-1)
-$$(1) \quad (\mathbf{w}^\text{T}\mathbf{x}(-1) + w_{N+1}) - 1 = 0$$
+$$(1) \quad (\mathbf{w}^\mathrm{T}\mathbf{x}(-1) + w_{N+1}) - 1 = 0$$
 
-$$(2) \quad (\mathbf{w}^\text{T}\mathbf{x}(1) + w_{N+1}) + 1 = 0$$
+$$(2) \quad (\mathbf{w}^\mathrm{T}\mathbf{x}(1) + w_{N+1}) + 1 = 0$$
 
 because of (1) + (2),
 $$
-w_{N+1} = -\frac{1}{2} \mathbf{w}^\text{T}[\mathbf{x}(-1) + \mathbf{x}(1)]
+w_{N+1} = -\frac{1}{2} \mathbf{w}^\mathrm{T}[\mathbf{x}(-1) + \mathbf{x}(1)]
 $$
 it means that the bias is obtained by taking the midpoint of the positive and negative support vectors, projecting it onto the direction of w, and then applying the symmetry condition
 
@@ -143,25 +133,25 @@ Since not all training samples can be perfectly separated, the SVM introduces sl
 
 instead of
 $$
-y_i \left( \mathbf{w}^\text{T} \mathbf{x}_i + w_{N+1} \right) \geq 1
+y_i \left( \mathbf{w}^\mathrm{T} \mathbf{x}_i + w_{N+1} \right) \geq 1
 $$
 we get
 $$
-y_i \left( \mathbf{w}^\text{T} \mathbf{x}_i + w_{N+1} \right) \geq 1 - \xi_i
+y_i \left( \mathbf{w}^\mathrm{T} \mathbf{x}_i + w_{N+1} \right) \geq 1 - \xi_i
 $$
 their sum will be an indication of the total error incurred by the poorly located training pixels
 $$
 \frac{1}{2} \|\mathbf{w}\| + C \sum_{i} \xi_i
 $$
 introduce two constrains:
-$$(A) \quad y_i(\mathbf{w}^T \mathbf{x}_i + w_{N+1}) \geq 1 - \xi_i$$
+$$(A) \quad y_i(\mathbf{w}^\mathrm{T} \mathbf{x}_i + w_{N+1}) \geq 1 - \xi_i$$
 (A) means If $\xi_i = 0$, the point must lie strictly outside the margin; if $\xi_i > 0$, the point is allowed to enter the margin or even be misclassified
 $$(B) \quad \xi_i \geq 0$$
 (B) means Slack variables must be non-negative; they cannot cancel the classification condition
 
 we can get the equation:
 $$
-\mathcal{L} = \frac{1}{2} \|\mathbf{w}\| + C \sum_{i} \xi_i - \sum_{i} \alpha_i \left\{ y_i \left( \mathbf{w}^\text{T} \mathbf{x}_i + w_{N+1} \right) - 1 + \xi_i \right\} - \sum_{i} \mu_i \xi_i
+\mathcal{L} = \frac{1}{2} \|\mathbf{w}\| + C \sum_{i} \xi_i - \sum_{i} \alpha_i \left\{ y_i \left( \mathbf{w}^\mathrm{T} \mathbf{x}_i + w_{N+1} \right) - 1 + \xi_i \right\} - \sum_{i} \mu_i \xi_i
 $$
 
 ## Lecture 8. The support vector machine: non-linear data
@@ -180,11 +170,11 @@ Diversity of kernels: Different kernel functions correspond to different types o
 
 the two classes are defined by the sign being positive and negative:
 $$
-z = \text{sgn}\{\mathbf{w}^\text{T}\mathbf{x} + w_{N+1}\} = \text{sgn}\left\{\sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i^\text{T}\mathbf{x} + w_{N+1}\right\}
+z = \text{sgn}\{\mathbf{w}^\mathrm{T}\mathbf{x} + w_{N+1}\} = \text{sgn}\left\{\sum_{i \in \mathcal{S}} \alpha_i y_i \mathbf{x}_i^\mathrm{T}\mathbf{x} + w_{N+1}\right\}
 $$
 and we notice that the key operation is dot product, it can be represented by a **Kernel function**
 $$
-\phi(\mathbf{x}_i)^\text{T} \phi(\mathbf{x}) \to k(\mathbf{x}_i, \mathbf{x})
+\phi(\mathbf{x}_i)^\mathrm{T} \phi(\mathbf{x}) \to k(\mathbf{x}_i, \mathbf{x})
 $$
 using the kernel function in the decision:
 $$
@@ -194,13 +184,13 @@ the most common kernel function in RS:
 
 - square of the scalar product(of limited value)
   $$
-  k(\mathbf{x}_i, \mathbf{x}) = (\mathbf{x}_i^\text{T} \mathbf{x})^2
+  k(\mathbf{x}_i, \mathbf{x}) = (\mathbf{x}_i^\mathrm{T} \mathbf{x})^2
   $$
   
 
 - polynomial(of limited value)
   $$
-  k(\mathbf{x}_i, \mathbf{x}) = (\mathbf{x}_i^\text{T} \mathbf{x} + b)^m
+  k(\mathbf{x}_i, \mathbf{x}) = (\mathbf{x}_i^\mathrm{T} \mathbf{x} + b)^m
   $$
   
 
@@ -212,14 +202,14 @@ the most common kernel function in RS:
 
 - sigmoidal(the most popular)
   $$
-  k(\mathbf{x}_i, \mathbf{x}) = \tanh(\kappa \mathbf{x}_i^\text{T} \mathbf{x} + b)
+  k(\mathbf{x}_i, \mathbf{x}) = \tanh(\kappa \mathbf{x}_i^\mathrm{T} \mathbf{x} + b)
   $$
 
 ### To see how kernel function work
 
 Definition of the quadratic kernel function
 $$
-k(\mathbf{y}, \mathbf{x}) = (\mathbf{y}^\text{T}\mathbf{x})^2
+k(\mathbf{y}, \mathbf{x}) = (\mathbf{y}^\mathrm{T}\mathbf{x})^2
 $$
 Two - dimensional vector representations of **y** and **x**
 $$
@@ -227,11 +217,11 @@ $$
 $$
 Expansion of the quadratic kernel for two - dimensional vectors
 $$
-k(\mathbf{y}, \mathbf{x}) = (\mathbf{y}^\text{T}\mathbf{x})^2 = [x_1 y_1 + x_2 y_2]^2 = x_1^2 y_1^2 + 2 x_1 y_1 x_2 y_2 + x_2^2 y_2^2
+k(\mathbf{y}, \mathbf{x}) = (\mathbf{y}^\mathrm{T}\mathbf{x})^2 = [x_1 y_1 + x_2 y_2]^2 = x_1^2 y_1^2 + 2 x_1 y_1 x_2 y_2 + x_2^2 y_2^2
 $$
 Rewrite the quadratic kernel as a scalar product of transformed vectors
 $$
-k(\mathbf{y}, \mathbf{x}) = \begin{bmatrix} x_1^2 & \sqrt{2} x_1 x_2 & x_2^2 \end{bmatrix} \begin{bmatrix} y_1^2 \\ \sqrt{2} y_1 y_2 \\ y_2^2 \end{bmatrix} = \begin{bmatrix} x_1^2 \\ \sqrt{2} x_1 x_2 \\ x_2^2 \end{bmatrix}^\text{T} \begin{bmatrix} y_1^2 \\ \sqrt{2} y_1 y_2 \\ y_2^2 \end{bmatrix}
+k(\mathbf{y}, \mathbf{x}) = \begin{bmatrix} x_1^2 & \sqrt{2} x_1 x_2 & x_2^2 \end{bmatrix} \begin{bmatrix} y_1^2 \\ \sqrt{2} y_1 y_2 \\ y_2^2 \end{bmatrix} = \begin{bmatrix} x_1^2 \\ \sqrt{2} x_1 x_2 \\ x_2^2 \end{bmatrix}^\mathrm{T} \begin{bmatrix} y_1^2 \\ \sqrt{2} y_1 y_2 \\ y_2^2 \end{bmatrix}
 $$
 thus k can be expressed as a scalar product
 
