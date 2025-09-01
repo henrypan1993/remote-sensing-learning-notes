@@ -16,11 +16,11 @@ with the algorithm developed, scientist began to consider the neighbors of a pix
 | **Relaxation Labelling**                                     | Represents each pixel’s class as posterior probabilities, which are iteratively updated by referring to the posterior probabilities of neighboring pixels. | 1970s (first in pattern recognition, later applied to remote sensing) | Strongly depends on initial classification; may converge to wrong results; computationally intensive due to iterations. |
 | **Computing Measures of Texture**                            | Calculates texture features (e.g., smoothness, roughness, contrast) in the neighborhood of each pixel and uses them as additional features in a classifier. | 1980s–1990s (introduced with advances in image processing)   | Highly sensitive to window size; texture varies across scales, making parameter selection difficult. |
 
-![](./RS week 9.assets/The analogies of Classical context classification.png)
+![](RS%20week%209.assets/The%20analogies%20of%20Classical%20context%20classification.png)
 
 In previous treatments, we assumed only one pixel at a time, described by its feature vector, was fed into the network. In convolutional neural networks we allow for the whole image to be fed into the network at once
 
-![From the perspective of problem solving to see the emergence of CNN](./RS week 9.assets/From the perspective of problem solving to see the emergence of CNN.png)
+![From the perspective of problem solving to see the emergence of CNN](RS%20week%209.assets/From%20the%20perspective%20of%20problem%20solving%20to%20see%20the%20emergence%20of%20CNN.png)
 
 ## Lecture 15. Deep learning and the convolutional neural network, part 2
 
@@ -37,7 +37,7 @@ In previous treatments, we assumed only one pixel at a time, described by its fe
 
 ### Some common concepts
 
-![Three key concepts in CNNs stride, pooling, and flattening ](./RS week 9.assets/Three key concepts in CNNs stride, pooling, and flattening .png)
+![Three key concepts in CNNs stride, pooling, and flattening ](RS%20week%209.assets/Three%20key%20concepts%20in%20CNNs%20stride,%20pooling,%20and%20flattening%20.png)
 
 **Stride**: which is the offset of the filter position (or receptive field) that provides input to each successive node in the hidden laver
 
@@ -71,20 +71,23 @@ $$
 p(o_n = t_n) = \frac{e^{o_n}}{\sum_{n=1}^{N} e^{o_n}}
 $$
 
-Note:  
+Note:
+
 $$
-\sum_n p = 1
+\sum_{n} p_n = 1
 $$
 
-and  
+and 
+
 $$
 p \in (0,1)
 $$
+
 Softmax converts a vector of raw outputs (logits) into a probability distribution
 
 Softmax = exponentiation + normalization
 
-![Argmax vs softmax in machine learning](./RS week 9.assets/Argmax vs softmax in machine learning.png)
+![Argmax vs softmax in machine learning](RS%20week%209.assets/Argmax%20vs%20softmax%20in%20machine%20learning.png)
 
 Key Ideas:
 
@@ -96,11 +99,11 @@ Key Ideas:
 
 | **Aspect**         | **Sigmoid**                                                  | **ReLU**                                   |
 | ------------------ | ------------------------------------------------------------ | ------------------------------------------ |
-| **Formula**        | \(\sigma(z) = \frac{1}{1 + e^{-z}}\)                         | \(f(z) = \max(0, z)\)                      |
+| **Formula**        | $$\\sigma(z) = \frac{1}{1 + e^{-z}}\$$                         | $$f(z) = \max(0, z)$$                      |
 | **Computation**    | Requires exponential (exp), relatively slow                  | Simple comparison, very fast               |
-| **Gradient**       | \(\sigma(z)(1-\sigma(z))\), can vanish when \(z \ll 0\) or \(z \gg 0\) | Derivative is 1 for \(z>0\), 0 for \(z<0\) |
+| **Gradient**       | $$\sigma(z)(1-\sigma(z))$$, can vanish when $$\(z \ll 0\) or \(z \gg 0\)$$ | Derivative is 1 for $$\(z>0\)$$, 0 for $$\(z<0\)$$ |
 | **Training Speed** | Slower due to vanishing gradient                             | Faster convergence, stable updates         |
-| **Issues**         | Vanishing gradients, saturation                              | Dead neurons (if many \(z<0\))             |
+| **Issues**         | Vanishing gradients, saturation                              | Dead neurons (if many $$\(z<0\)$$)             |
 
 ## Lecture 16. Deep learning and the convolutional neural network, part 3
 
@@ -130,7 +133,7 @@ $$
 
 A convolutional layer uses multiple filters of different sizes in parallel so that each filter captures distinct features (e.g., shapes or details), providing richer information for deeper layers
 
-![Typical CNNs topology](./RS week 9.assets/Typical CNNs topology.png)
+![Typical CNNs topology](RS%20week%209.assets/Typical%20CNNs%20topology.png)
 
 - **Pipeline**
   1. **Input image** ($N \times N$ pixels)
@@ -163,7 +166,7 @@ There are two new concepts:
 
 ### Analyze hyperspectral data for spatial properties alone
 
-![Two CNN Approaches for Hyperspectral Data Analysis](./RS week 9.assets/Two CNN Approaches for Hyperspectral Data Analysis.png)
+![Two CNN Approaches for Hyperspectral Data Analysis](RS%20week%209.assets/Two%20CNN%20Approaches%20for%20Hyperspectral%20Data%20Analysis.png)
 
 **Q1. Why apply PCA before CNN in hyperspectral images?**
 
@@ -171,7 +174,7 @@ There are two new concepts:
 
 - Directly applying convolution kernels to all bands leads to a parameter explosion:
 
-  \text{#params} \propto (\text{#bands}) \times (\text{kernel size}) \times (\text{#filters})
+$$\text{params} \propto (\text{bands}) \times (\text{kernel size}) \times (\text{filters})$$
 
 - PCA can reduce dimensionality by keeping only the most significant components, greatly reducing the number of input channels.
 
@@ -207,18 +210,16 @@ There are two new concepts:
 - Compute eigenvalues of the covariance matrix.  
 - Select the smallest number of PCs such that the cumulative variance retained meets a chosen threshold (e.g., 95%).  
 
-\[
+$$
 \text{Explained Variance Ratio}(k) = \frac{\sum_{i=1}^k \lambda_i}{\sum_{i=1}^n \lambda_i}
-\]
+$$
 
 **Q2. The diagram below shows a three-dimensional convolution kernel. Describe its operation mathematically. Is it any different from applying three separate two-dimensional kernels and summing the results?**
 
-![image-20250901180417636](./RS week 9.assets/image-20250901180417636.png)
+![image-20250901180417636](RS%20week%209.assets/image-20250901180417636.png)
 
 **A:**  Mathematical operation:  
-\[
-R(x,y) = \sum_{c=1}^{C} \sum_{i,j} w(c,i,j)\, I(c, x+i, y+j)
-\]
+$$R(x,y) = \sum_{c=1}^{C} \sum_{i,j} w(c,i,j) \cdot I(c, x+i, y+j)$$
 
 - Equivalent to applying a 2D convolution on each channel separately and summing the results.  
 - No difference: this is exactly how standard multi-channel convolution works in CNNs (plus bias and activation).  
@@ -229,7 +230,7 @@ R(x,y) = \sum_{c=1}^{C} \sum_{i,j} w(c,i,j)\, I(c, x+i, y+j)
 
 Hu, W., Huang, Y., Wei, L., Zhang, F., & Li, H. (2015). Deep Convolutional Neural Networks for Hyperspectral Image Classification. *Journal of Sensors*, *2015*, 1–12. https://doi.org/10.1155/2015/258619
 
-![image-20250901223238080](./RS week 9.assets/image-20250901223238080.png)
+![image-20250901223238080](RS%20week%209.assets/image-20250901223238080.png)
 
 | Layer                  | Description                           | Formula                         | Value |
 | ---------------------- | ------------------------------------- | ------------------------------- | ----- |
@@ -248,7 +249,7 @@ To verify 81,408 unknowns:
 - **Hidden-output layer**: \((100 + 1)×8 = 808\).
 - **Total**: \(500 + 80,100 + 808 = 81,408\).
 
-![image-20250901223845570](./RS week 9.assets/image-20250901223845570.png)
+![image-20250901223845570](RS%20week%209.assets/image-20250901223845570.png)
 
 From left to right: ground truth, RBF-SVM, and CNNs
 
@@ -263,7 +264,7 @@ Accuracy comparison
 
 Yang, J., Zhao, Y.-Q., & Chan, J. C.-W. (2017). Learning and Transferring Deep Joint Spectral–Spatial Features for Hyperspectral Classification. *IEEE Transactions on Geoscience and Remote Sensing*, *55*(8), 4729–4742. https://doi.org/10.1109/TGRS.2017.2698503
 
-![image-20250901225233093](./RS week 9.assets/image-20250901225233093.png)
+![image-20250901225233093](RS%20week%209.assets/image-20250901225233093.png)
 
 **Dataset (Salinas, California):**
 
@@ -285,7 +286,7 @@ Yang, J., Zhao, Y.-Q., & Chan, J. C.-W. (2017). Learning and Transferring Deep J
 
 Notice two important techniques:
 
-![Capture neighborhood (spatial) properties of a pixel](./RS week 9.assets/Capture neighborhood (spatial) properties of a pixel.png)
+![Capture neighborhood (spatial) properties of a pixel](RS%20week%209.assets/Capture%20neighborhood%20(spatial)%20properties%20of%20a%20pixel.png)
 
 #### 1. **Spatial Layer**
 
@@ -319,7 +320,7 @@ Notice two important techniques:
 
 Makantasis, K., Karantzalos, K., Doulamis, A., & Doulamis, N. (2015). Deep supervised learning for hyperspectral data classification through convolutional neural networks. *2015 IEEE International Geoscience and Remote Sensing Symposium (IGARSS)*, 4959–4962. https://doi.org/10.1109/IGARSS.2015.7326945
 
-![image-20250902001043287](./RS week 9.assets/image-20250902001043287.png)
+![image-20250902001043287](RS%20week%209.assets/image-20250902001043287.png)
 
 ## Lecture 18. Comparing the classifiers
 
