@@ -77,12 +77,13 @@ remote-sensing-course/
 | **Week 6** | **Machine Learning in Remote Sensing** | [📖 RS week 6.md](week%206/RS%20week%206.md) | - Image analysis fundamentals<br/>- Maximum likelihood classifier<br/>- Minimum distance classifier<br/>- Bayes theorem applications | ✅ Completed 2025-08-20 |
 | **Week 7** | **Linear Classifiers Training** | [📖 RS week 7.md](week%207/RS%20week%207.md) | - Supervised learning<br/>- Linear classification<br/>- Training algorithms<br/>- Performance evaluation | ✅ Completed 2025-08-24 |
 | **Week 8** | **Neural Network Structure & Training** | [📖 RS week 8.md](week%208/RS%20week%208.md) | - Neural network fundamentals<br/>- Activation functions<br/>- Multilayer perceptron<br/>- Backpropagation training | ✅ Completed 2025-08-28 |
+| **Week 9** | **Deep Learning & CNN in Remote Sensing** | [📖 RS week 9.md](week%209/RS%20week%209.md) | - Convolutional neural networks<br/>- Spatial context classification<br/>- CNN architecture & topology<br/>- Hyperspectral data analysis | ✅ Completed 2025-09-01 |
 
 ### ⏳ Upcoming Modules
 
 | Week | Topic | Status | Expected Focus |
 |------|-------|--------|----------------|
-| **Week 9** | CNN in remote sensing | ⏳ | - Convolutional networks<br/>- Spatial feature extraction |
+| **Week 10** | Unsupervised classification | ⏳ | - Clustering algorithms<br/>- Pattern recognition |
 | **Week 10** | Unsupervised classification | ⏳ | - Clustering algorithms<br/>- Pattern recognition |
 | **Week 11** | Practical classification matters | ⏳ | - Real-world applications<br/>- Accuracy assessment |
 | **Week 12** | Thematic map accuracy | ⏳ | - Validation methods<br/>- Error analysis |
